@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.funky.practice.realm.MainActivity">
+    <item
+        android:id="@+id/action_realm"
+        android:icon="@android:drawable/stat_notify_sync"
+        android:orderInCategory="100"
+        android:title="@string/action_init"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_sqlite"
+        android:icon="@android:drawable/stat_notify_sync"
+        android:orderInCategory="100"
+        android:title="@string/action_init"
+        app:showAsAction="always"/>
+</menu>
