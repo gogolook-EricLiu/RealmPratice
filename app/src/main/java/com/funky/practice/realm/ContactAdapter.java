@@ -3,6 +3,7 @@ package com.funky.practice.realm;
 import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +27,9 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
 	private RealmResults<Contact> mContactList;
 
-	public void setContactList(RealmResults<Contact> contactList) {
+	public void setContactList(@NonNull RealmResults<Contact> contactList) {
 		mContactList = contactList;
+		notifyDataSetChanged();
 	}
 
 	@Override

@@ -99,18 +99,13 @@ public class MainFragment extends Fragment {
 		mContacts = mRealm.where(Contact.class).findAll();
 		mPhoneNumbers = mRealm.where(PhoneNumber.class).findAll();
 
-		if (null != mAdapter) {
-			mAdapter.setContactList(mContacts);
-		}
-
 		mContacts.addChangeListener(new RealmChangeListener<RealmResults<Contact>>() {
 			@Override
 			public void onChange(RealmResults<Contact> contacts) {
-				if (mRealm.isClosed() || null == contacts || !contacts.isValid() || !contacts.isLoaded()) {
+				if (null == mAdapter || mRealm.isClosed() || null == contacts || !contacts.isValid() || !contacts.isLoaded()) {
 					return;
 				}
 				mAdapter.setContactList(contacts);
-				mAdapter.notifyDataSetChanged();
 			}
 		});
 	}
@@ -118,6 +113,7 @@ public class MainFragment extends Fragment {
 	@Override
 	public void onStop() {
 		super.onStop();
+		mContacts.removeChangeListeners();
 		mRealm.close();
 	}
 
@@ -217,6 +213,11 @@ public class MainFragment extends Fragment {
 						}, new Realm.Transaction.OnSuccess() {
 							@Override
 							public void onSuccess() {
+								for (Contact contact : mContacts) {
+									if (contact.phoneNumbers.size() > 1) {
+										Log.e("funky", "" + contact.name);
+									}
+								}
 								Toast.makeText(getActivity(), mContacts.size() + " contacts spend " + (System.currentTimeMillis() - startTime) + "ms", Toast.LENGTH_SHORT).show();
 							}
 						});
