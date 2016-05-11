@@ -96,7 +96,7 @@ public class MainFragment extends Fragment {
 		super.onStart();
 		mRealm = Realm.getDefaultInstance();
 
-		mContacts = mRealm.where(Contact.class).findAll();
+		mContacts = mRealm.where(Contact.class).findAllSortedAsync("name");
 		mPhoneNumbers = mRealm.where(PhoneNumber.class).findAll();
 
 		mContacts.addChangeListener(new RealmChangeListener<RealmResults<Contact>>() {
