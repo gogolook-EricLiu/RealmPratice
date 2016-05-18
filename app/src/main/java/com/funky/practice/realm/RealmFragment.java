@@ -50,7 +50,7 @@ import rx.schedulers.Schedulers;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainFragment extends Fragment {
+public class RealmFragment extends Fragment {
 	private static final int REQUEST_CODE_READ_CONTACT_REALM = 1;
 	private static final int REQUEST_CODE_READ_CONTACT_SQLITE = 2;
 
@@ -67,13 +67,13 @@ public class MainFragment extends Fragment {
 
 	private ContactAdapter mAdapter;
 
-	public MainFragment() {
+	public RealmFragment() {
 		setHasOptionsMenu(true);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.main_fragment, container, false);
+		View view = inflater.inflate(R.layout.common_fragment, container, false);
 
 		mUnbinder = ButterKnife.bind(this, view);
 
