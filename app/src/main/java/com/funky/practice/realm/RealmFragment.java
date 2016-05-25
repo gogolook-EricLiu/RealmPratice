@@ -213,12 +213,19 @@ public class RealmFragment extends Fragment {
 						}, new Realm.Transaction.OnSuccess() {
 							@Override
 							public void onSuccess() {
-								for (Contact contact : mContacts) {
-									if (contact.phoneNumbers.size() > 1) {
-										Log.e("funky", "" + contact.name);
+								final long spendTime = System.currentTimeMillis() - startTime;
+								final RealmResults<Contact> contacts = mRealm.where(Contact.class).findAllAsync();
+								contacts.addChangeListener(new RealmChangeListener<RealmResults<Contact>>() {
+									@Override
+									public void onChange(RealmResults<Contact> contacts) {
+										for (Contact contact : contacts) {
+											if (contact.phoneNumbers.size() > 1) {
+												Log.e("funky", "" + contact.name);
+											}
+										}
+										Toast.makeText(getActivity(), contacts.size() + " contacts spend " + spendTime + "ms", Toast.LENGTH_SHORT).show();
 									}
-								}
-								Toast.makeText(getActivity(), mContacts.size() + " contacts spend " + (System.currentTimeMillis() - startTime) + "ms", Toast.LENGTH_SHORT).show();
+								});
 							}
 						});
 					}
