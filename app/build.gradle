@@ -36,8 +36,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
 
-    compile 'com.googlecode.libphonenumber:libphonenumber:7.4.3'
-    compile 'com.googlecode.libphonenumber:prefixmapper:2.45'
+    compile 'com.googlecode.libphonenumber:libphonenumber:7.4.4'
+    compile 'com.googlecode.libphonenumber:prefixmapper:2.46'
 
     compile 'com.jakewharton:butterknife:8.1.0'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
@@ -47,5 +47,5 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
     compile 'io.reactivex:rxjava:1.1.6'
-    compile 'io.reactivex:rxandroid:1.2.0'
+    compile 'io.reactivex:rxandroid:1.2.1'
 }
