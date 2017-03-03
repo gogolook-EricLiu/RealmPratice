@@ -5,6 +5,7 @@ import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -134,8 +135,14 @@ public class RealmFragment extends Fragment {
         } else if (id == R.id.action_sqlite) {
             syncContactToSqlite();
             return true;
+        } else if (id == R.id.action_open_scroll) {
+            openScrollActivity();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openScrollActivity() {
+        startActivity(new Intent(getActivity(), ScrollingActivity.class));
     }
 
     private void syncContactToRealm() {
